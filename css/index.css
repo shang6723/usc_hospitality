@@ -1,0 +1,29 @@
+    /* For map:  Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
+    .header {
+        background-color: #0077b3;
+        height: 50px;
+    }
+    .header_bar {
+        margin: 0;
+        padding-top: 5px;
+    }
+    .header_bar li {
+        display: inline;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    
+    /* Always set the map height explicitly to define the size of the div element that contains the map. */
+    #map {
+        height: 80%;
+    }
