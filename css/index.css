@@ -7,22 +7,40 @@
     
     body {
         font-family: 'Open Sans', sans-serif;
+        background-color: #0077b3;
     }
+    
+    /*header*/
     .header {
         background-color: #0077b3;
-        height: 50px;
+        height: 10%;
     }
     .header_bar {
         margin: 0;
-        padding-top: 5px;
+        padding-top: 1vh;
     }
     .header_bar li {
         display: inline;
-        font-size: 28px;
+        font-size: 5vh;
         font-weight: bold;
+        color: #ffffff;
     }
     
+    #header_bar_menu a img{
+        width: 3vh;
+        padding-right: 2vh;
+    }
     
+    /*fooder*/
+    .footer {
+        background-color: #0077b3;
+    }
+    .footer p {
+        font-size: 1vh;
+        color: #ffffff;
+        padding: 1vh 0vh 0vh 0vh;
+        text-align: center;
+    }
     /* Always set the map height explicitly to define the size of the div element that contains the map. */
     #map {
         height: 80%;
