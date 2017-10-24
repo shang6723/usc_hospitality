@@ -17,80 +17,18 @@
     }
     .header_bar {
         margin: 0;
-        padding: 0;
-        height: 100%;
+        padding-top: 1vh;
     }
     .header_bar li {
-        height: 100%;
-        display: inline-block;
+        display: inline;
         font-size: 5vh;
         font-weight: bold;
         color: #ffffff;
     }
     
-    /* Dropdown Button */
-    .dropbtn {
-        background-color: inherit;
-        border: none;
-        cursor: pointer;
-        height: 100%;
-        display: block;
-    }
-    
-    .dropbtn:hover, .dropbtn:focus {
-        background-color: #004466;
-    }
-    
-    #dropbtn_line {
-        display: block;
-        opacity: 1;
-        width: 5vh;
-        height: 0.5vh;
-        background-color: white;
-    }
-    
-    #dropbtn_space {
-        display: block;
-        opacity: 1;
-        width: 1.5vh;
-        height: 1vh;
-    }
-    
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-        position: relative;
-    }
-    
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #000000;
-        opacity: .8;
-        min-width: 50vh;
-        height: 80vh;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-    
-    /* Links inside the dropdown */
-    .dropdown-content a {
-        color: #ffffff;
-        font-size: 3vh;
-        padding: 1vh 1.5vh;
-        text-decoration: none;
-        display: block;
-    }
-    
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: #f1f1f1;
-        color: #000000;
-    }
-    
-    /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-    .show {
-        display: block;
+    #header_bar_menu a img{
+        width: 3vh;
+        padding-right: 2vh;
     }
     
     /*fooder*/
