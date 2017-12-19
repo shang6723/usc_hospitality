@@ -22,6 +22,8 @@ if (!$db_selected) {
 // Select all the rows in the markers table
 
 $query = "SELECT * FROM uscfood_location WHERE 1";
+
+
 $result = mysqli_query($connection, $query);
 if (!$result) {
   die('Invalid query: ' . mysqli_error($connection));

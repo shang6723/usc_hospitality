@@ -1,31 +1,58 @@
     var map;
+    var locations = [
+                        {lat: 34.020443, lng: -118.286224},
+                        {lat: 34.019138, lng: -118.287956}
+                        ];
     function initMap() {
         // map focus on
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 34.021, lng: -118.286},
             zoom: 16
         });
-        
-        var locations = [{lat: 34.020443, lng: -118.286224},
-                        {lat: 34.019138, lng: -118.287956}];
-        
-        // Create an array of alphabetical characters used to label the markers.
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var customLabel = {
+            restaurant: {
+              label: 'R'
+            },
+            bar: {
+              label: 'B'
+            }
+        };
+        var infoWindow = new google.maps.InfoWindow;
 
-        // Add some markers to the map.
-        // Note: The code uses the JavaScript Array.prototype.map() method to
-        // create an array of markers based on a given "locations" array.
-        // The map() method here has nothing to do with the Google Maps API.
-        var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
+          // Change this depending on the name of your PHP or XML file
+          downloadUrl('http://www2.cs.ccu.edu.tw/~hsc100u/project/uscfoodmap/php/location.php', function(data) {
+            var xml = data.responseXML;
+            var markers = xml.documentElement.getElementsByTagName('marker');
+            Array.prototype.forEach.call(markers, function(markerElem) {
+              var name = markerElem.getAttribute('name');
+              var address = markerElem.getAttribute('address');
+              var type = markerElem.getAttribute('type');
+              var point = new google.maps.LatLng(
+                  parseFloat(markerElem.getAttribute('lat')),
+                  parseFloat(markerElem.getAttribute('lng')));
+
+              var infowincontent = document.createElement('div');
+              var strong = document.createElement('strong');
+              strong.textContent = name
+              infowincontent.appendChild(strong);
+              infowincontent.appendChild(document.createElement('br'));
+
+              var text = document.createElement('text');
+              text.textContent = address
+              infowincontent.appendChild(text);
+              var icon = customLabel[type] || {};
+              var marker = new google.maps.Marker({
+                map: map,
+                position: point,
+                label: icon.label
+              });
+              marker.addListener('click', function() {
+                infoWindow.setContent(infowincontent);
+                infoWindow.open(map, marker);
+              });
+            });
           });
-        });
-
-        // Add a marker clusterer to manage the markers.
-        var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        
         
         // map style
         var styledMapType = new google.maps.StyledMapType(
@@ -52,4 +79,26 @@
             {name: 'Styled Map'});
         map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');
+    }
+    
+    function downloadUrl(url, callback) {
+        var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+        request.onreadystatechange = function() {
+          if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+          }
+        };
+
+        request.open('GET', url, true);
+        request.send(null);
+    }
+
+    function doNothing() {}
+    
+    function focusPoint() {
+        locations = [{lat: 34.020443, lng: -118.286224}];
     }

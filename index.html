@@ -7,16 +7,17 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDrdDPbIwmeiWSEbXewPAGfagGRDSCMRA&callback=initMap" async defer></script>
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
         <script src="js/map.js"></script>
         <script src="js/index.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDrdDPbIwmeiWSEbXewPAGfagGRDSCMRA&callback=initMap" async defer></script>
+        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     </head>
     <body>
+
         <div class="header">
             <ul class="header_bar">
                 <li class="dropdown">
-                    <button onclick="myFunction();" class="dropbtn">
+                    <button onclick="RestaurantDropdown_func();" class="dropbtn" id="menu">
                         <span id="dropbtn_line"></span>
                         <span id="dropbtn_space"></span>
                         <span id="dropbtn_line"></span>
@@ -24,39 +25,11 @@
                         <span id="dropbtn_line"></span>
                     </button>
                     <div id="MenuDropdown" class="dropdown-content">
-                        <a href="#" onclick="FSRDropdown_fun();">Full Service Restaurants</a>
+                        <a href="#" onclick="FSRDropdown_func();">Full Service Restaurants</a>
                         <div id="FSRDropdown" class="Seconddropdown">
-                            <a href="#">MORETON FIG</a>
-                            <a href="#">TRADITIONS</a>
-                            <a href="#">THE LAB GASTROPUB</a>
-                            <a href="#">MCKAY’S</a>
-                            <a href="#">UNIVERSITY CLUB</a>
                         </div>
-                        <a href="#" onclick="QSRDropdown_fun();">Quick Service Restaurants</a>
+                        <a href="#" onclick="QSRDropdown_func();">Quick Service Restaurants</a>
                         <div id="QSRDropdown" class="Seconddropdown">
-                            <a href="#">TROJAN FAMILY ROOM</a>
-                            <a href="#">CALIFORNIA PIZZA KITCHEN</a>
-                            <a href="#">COFFEE BEAN & TEA LEAF</a>
-                            <a href="#">THE HABIT BURGER GRILL</a>
-                            <a href="#">LEMONADE</a>
-                            <a href="#">PANDA EXPRESS</a>
-                            <a href="#">SEEDS</a>
-                            <a href="#">VERDE</a>
-                            <a href="#">STARBUCKS AT CAFÉ 84</a>
-                            <a href="#">ANNENBERG CART</a>
-                            <a href="#">CAMMILLERI CAFÉ</a>
-                            <a href="#">COFFEE BEAN & TEA LEAF (CINEMA)</a>
-                            <a href="#">FERTITTA CAFÉ</a>
-                            <a href="#">LAW SCHOOL CAFÉ</a>
-                            <a href="#">LITERATEA</a>
-                            <a href="#">LITTLE GALEN</a>
-                            <a href="#">NEKTER AT SHOP CAFÉ</a>
-                            <a href="#">POPOVICH CAFÉ</a>
-                            <a href="#">ROSSO ORO’S</a>
-                            <a href="#">STARBUCKS AT TROJAN GROUNDS</a>
-                            <a href="#">THE CAFÉ</a>
-                            <a href="#">TUTOR HALL CAFÉ</a>
-                            <a href="#">URBNMRKT</a>
                         </div>
                     </div>
                 </li>
@@ -66,6 +39,7 @@
         <div id="map"></div>
         <div class="footer">
             <p>© 2017 Shang6723 All rights reserved.</p>
+            <p id="output">kkk</p>
         </div>
     </body>
 </html>
