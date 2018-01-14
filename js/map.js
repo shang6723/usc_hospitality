@@ -1,8 +1,10 @@
     var map;
-    var locations = [
-                        {lat: 34.020443, lng: -118.286224},
-                        {lat: 34.019138, lng: -118.287956}
-                        ];
+    //var locations = [
+    //                    {lat: 34.020443, lng: -118.286224},
+    //                    {lat: 34.019138, lng: -118.287956}
+    //                    ];
+    var marker;
+    var markerarr = [];
     function initMap() {
         // map focus on
         map = new google.maps.Map(document.getElementById('map'), {
@@ -33,15 +35,15 @@
 
               var infowincontent = document.createElement('div');
               var strong = document.createElement('strong');
-              strong.textContent = name
+              strong.textContent = name;
               infowincontent.appendChild(strong);
               infowincontent.appendChild(document.createElement('br'));
 
               var text = document.createElement('text');
-              text.textContent = address
+              text.textContent = address;
               infowincontent.appendChild(text);
               var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
+              marker = new google.maps.Marker({
                 map: map,
                 position: point,
                 label: icon.label
@@ -50,6 +52,7 @@
                 infoWindow.setContent(infowincontent);
                 infoWindow.open(map, marker);
               });
+              markerarr.push(marker);
             });
           });
         
@@ -98,7 +101,3 @@
     }
 
     function doNothing() {}
-    
-    function focusPoint() {
-        locations = [{lat: 34.020443, lng: -118.286224}];
-    }

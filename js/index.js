@@ -1,3 +1,5 @@
+    var location_data;
+    
     function RestaurantDropdown_func() {
         document.getElementById("MenuDropdown").classList.toggle("show");
     }
@@ -15,8 +17,35 @@
     }
     
 
-    function Focus_rest(id) {
-        var c = id;
+    function Focus_rest(lat, lng, name, address) {
+        
+        //Remove previous Marker.
+        for (var i = 0; i < markerarr.length; i++) {
+          markerarr[i].setMap(null);
+        }
+ 
+        //Set Marker on Map.
+        var myLatlng = new google.maps.LatLng(lat, lng);
+        marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: name
+        });
+        
+        markerarr.push(marker);
+        
+        //Create and open InfoWindow.
+        var infoWindow = new google.maps.InfoWindow();
+        var infowincontent = document.createElement('div');
+        var strong = document.createElement('strong');
+        strong.textContent = decodeURIComponent(name);
+        infowincontent.appendChild(strong);
+        infowincontent.appendChild(document.createElement('br'));
+        var text = document.createElement('text');
+        text.textContent = decodeURIComponent(address);
+        infowincontent.appendChild(text);
+        infoWindow.setContent(infowincontent);
+        infoWindow.open(map, marker);
     }
     $(document).ready(function() {
         $("#menu").click(function() {
@@ -25,13 +54,14 @@
                 url: "./php/query.php",
                 dataType: "json",
                 success: function(data) {
+                    location_data = data;
                     $("#FSRDropdown").empty();
                     $("#QSRDropdown").empty();
                     for (var i = 0; i < data.length; i++) {
                         if (data[i].type == "FSR") {
-                            $("#FSRDropdown").append("<a href='#' onclick=Focus_rest('" + data[i].id + "')>" + data[i].name + "</a>");
+                            $("#FSRDropdown").append("<a href='#' onclick=Focus_rest('" + data[i].lat + "','" + data[i].lng + "','" + encodeURIComponent(data[i].name) + "','" + encodeURIComponent(data[i].address) + "')>" + data[i].name + "</a>");
                         } else {
-                            $("#QSRDropdown").append("<a href='#' onclick=Focus_rest('" + data[i].id + "')>" + data[i].name + "</a>");
+                            $("#QSRDropdown").append("<a href='#' onclick=Focus_rest('" + data[i].lat + "','" + data[i].lng + "','" + encodeURIComponent(data[i].name) + "','" + encodeURIComponent(data[i].address) + "')>" + data[i].name + "</a>");
                         }
                     }
                 },
