@@ -17,7 +17,7 @@
         <div class="header">
             <ul class="header_bar">
                 <li class="dropdown">
-                    <button onclick="RestaurantDropdown_func();" class="dropbtn" id="menu">
+                    <button onclick="RestaurantDropdown_func();" id="dropbtn">
                         <span id="dropbtn_line"></span>
                         <span id="dropbtn_space"></span>
                         <span id="dropbtn_line"></span>
@@ -33,13 +33,12 @@
                         </div>
                     </div>
                 </li>
-                <li>USC Hospitality</li>
+                <li id="titlebtn" onclick="javascript:window.location.reload()">USC Hospitality</li>
             </ul>
         </div>
         <div id="map"></div>
         <div class="footer">
             <p>© 2017 Shang6723 All rights reserved.</p>
-            <p id="output">kkk</p>
         </div>
     </body>
 </html>

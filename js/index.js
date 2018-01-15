@@ -26,7 +26,7 @@
  
         //Set Marker on Map.
         var myLatlng = new google.maps.LatLng(lat, lng);
-        marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
             title: name
@@ -46,9 +46,13 @@
         infowincontent.appendChild(text);
         infoWindow.setContent(infowincontent);
         infoWindow.open(map, marker);
+        //set marker clickable
+        marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+          });
     }
     $(document).ready(function() {
-        $("#menu").click(function() {
+        $("#dropbtn").click(function() {
             $.ajax({
                 type: "POST",
                 url: "./php/query.php",

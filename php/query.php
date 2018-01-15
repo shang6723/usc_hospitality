@@ -21,7 +21,7 @@ if (!$db_selected) {
 
 // Select all the rows in the markers table
 
-$query = "SELECT * FROM uscfood_location WHERE 1";
+$query = "SELECT * FROM uscfood_location WHERE 1 ORDER BY name";
 
 
 $result_query = mysqli_query($connection, $query);

@@ -1,9 +1,4 @@
     var map;
-    //var locations = [
-    //                    {lat: 34.020443, lng: -118.286224},
-    //                    {lat: 34.019138, lng: -118.287956}
-    //                    ];
-    var marker;
     var markerarr = [];
     function initMap() {
         // map focus on
@@ -43,7 +38,7 @@
               text.textContent = address;
               infowincontent.appendChild(text);
               var icon = customLabel[type] || {};
-              marker = new google.maps.Marker({
+              var marker = new google.maps.Marker({
                 map: map,
                 position: point,
                 label: icon.label
